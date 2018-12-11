@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Календар</h2>
+<h2>Calendar</h2>
+<br/>
+<select id="locality-dropdown" name="locality"></select>
 
 <div id="calendar"></div>
 
@@ -77,14 +79,28 @@
 
 <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 @section Scripts{
-<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
-<script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
     <script>
-        
+
         $(document).ready(function () {
             var events = [];
             var selectedEvent = null;
+
             FetchEventAndRenderCalendar();
+
+            let dropdown = $('#locality-dropdown');
+            dropdown.empty();
+            dropdown.append('<option selected="true" disabled>Choose Location</option>');
+            dropdown.prop('selectedIndex', 0);
+            const url = '/Locations/GetLocationsDropdown';
+
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.LocationId).text(entry.LocationName));
+                })
+            });
+
             function FetchEventAndRenderCalendar() {
                 events = [];
                 $.ajax({
@@ -119,7 +135,7 @@
                     showNonCurrentDates: true,
                     weekends: true,
                     firstDay: 1,
-                    nextDayThreshold: '00:01' ,
+                    nextDayThreshold: '00:01',
                     defaultDate: new Date(),
                     timeFormat: 'h(:mm)a',
                     header: {
@@ -184,7 +200,7 @@
             $('#datepickerStart,#datepickerEnd').datetimepicker({
                 format: 'DD/MM/YYYY HH:mm A'
             });
-          
+
             function openAddEditForm() {
                 if (selectedEvent != null) {
                     $('#hdShiftID').val(selectedEvent.ShiftId);
@@ -227,7 +243,7 @@
                     Notes: $('#txtNotes').val(),
                 }
                 SaveEvent(data);
-                // call function for submit data to the server 
+                // call function for submit data to the server
             })
 
             function SaveEvent(data) {
