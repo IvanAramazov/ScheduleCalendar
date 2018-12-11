@@ -20,16 +20,6 @@ namespace ScheduleCalendar_V2.Controllers
             return View(db.Locations.ToList());
         }
 
-        public JsonResult GetLocationsDropdown()
-        {
-            using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
-            {
-                var events = cntx.Locations.ToList();
-                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-        }
-
-
         // GET: Locations/Details/5
         public ActionResult Details(int? id)
         {
