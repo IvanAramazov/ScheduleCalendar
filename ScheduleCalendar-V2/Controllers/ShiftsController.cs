@@ -12,10 +12,24 @@ namespace ScheduleCalendar_V2.Controllers
         // GET: Shifts
         public ActionResult Index()
         {
+            ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2();
+            Shift shift1 = new Shift { EmployeeId = 2, Location_LocationId = 2, Notes = "test 2", StartShift = DateTime.Now.AddDays(3), EndShift = DateTime.Now.AddDays(3).AddHours(8) };
+            cntx.Shifts.Add(shift1);
+            cntx.SaveChanges();
             return View();
         }
 
         public JsonResult GetEvents()
+        {
+            using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
+            {
+                var events = cntx.Shifts.ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+
+        public JsonResult GetEventsByLocationId()
         {
             using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
             {

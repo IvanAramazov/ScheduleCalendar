@@ -16,5 +16,8 @@ namespace ScheduleCalendar_V2.Models
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
+        public int Location_LocationId { get; set; }
+        public Location Location { get; set; }
+
     }
 }

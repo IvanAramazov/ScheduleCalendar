@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Календар</h2>
+<h2>Calendar</h2>
+
+<select id="locality-dropdown" name="locality"></select>
 
 <div id="calendar"></div>
 
@@ -84,7 +86,23 @@
         $(document).ready(function () {
             var events = [];
             var selectedEvent = null;
+
             FetchEventAndRenderCalendar();
+
+            let dropdown = $('#locality-dropdown');
+            dropdown.empty();
+            dropdown.append('<option selected="true" disabled>Choose Location</option>');
+            dropdown.prop('selectedIndex', 0);
+
+            const url = '/Locations/GetLocationsDropdown';
+
+            // Populate dropdown with list of provinces
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.LocationId).text(entry.LocationName));
+                })
+            });
+
             function FetchEventAndRenderCalendar() {
                 events = [];
                 $.ajax({
