@@ -165,6 +165,10 @@
     <Compile Include="Migrations\201812111055057_DbUpadeFK.Designer.cs">
       <DependentUpon>201812111055057_DbUpadeFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812111344083_revrtChanges.cs" />
+    <Compile Include="Migrations\201812111344083_revrtChanges.Designer.cs">
+      <DependentUpon>201812111344083_revrtChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Location.cs" />
@@ -560,6 +564,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812111055057_DbUpadeFK.resx">
       <DependentUpon>201812111055057_DbUpadeFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111344083_revrtChanges.resx">
+      <DependentUpon>201812111344083_revrtChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
