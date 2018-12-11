@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Employee</h4>
         <hr />
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EmployeeDateOfHire, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EmployeeDateOfHire, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EmployeeDateOfHire, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.EmployeeDateOfHire, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,3 +44,19 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section Scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy ",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+}

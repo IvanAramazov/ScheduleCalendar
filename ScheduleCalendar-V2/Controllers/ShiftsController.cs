@@ -36,7 +36,7 @@ namespace ScheduleCalendar_V2.Controllers
                     var v = cntx.Shifts.Where(a => a.ShiftId == s.ShiftId).FirstOrDefault();
                     if (v != null)
                     {
-                        v.Employee = s.Employee;
+                        v.EmployeeId = s.EmployeeId;
                         v.Notes = s.Notes;
                         v.StartShift = s.StartShift;
                         v.EndShift = s.EndShift;
