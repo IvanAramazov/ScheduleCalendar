@@ -20,6 +20,15 @@ namespace ScheduleCalendar_V2.Controllers
             return View(db.Employees.ToList());
         }
 
+        public JsonResult GetEmployees()
+        {
+            using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
+            {
+                var events = cntx.Employees.ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {

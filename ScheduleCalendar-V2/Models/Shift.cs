@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +14,7 @@ namespace ScheduleCalendar_V2.Models
         public DateTime StartShift { get; set; }
         public DateTime EndShift { get; set; }
 
+        [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 

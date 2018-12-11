@@ -70,7 +70,6 @@ namespace ScheduleCalendar_V2.Controllers
                 }
 
             }
-
             return new JsonResult { Data = new { status } };
         }
     }

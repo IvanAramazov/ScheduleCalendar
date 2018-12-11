@@ -11,6 +11,6 @@ namespace ScheduleCalendar_V2.Models
         public string EmployeeName { get; set; }
         public DateTime EmployeeDateOfHire { get; set; }
 
-        public ICollection<Shift> Shifts { get; set; }
+        public List<Shift> Shifts { get; set; }
     }
 }

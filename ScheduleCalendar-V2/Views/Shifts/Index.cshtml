@@ -4,7 +4,10 @@
 }
 <h2>Calendar</h2>
 <br/>
-<select id="locality-dropdown" name="locality"></select>
+
+<div class="dropdown" style="margin-bottom:10px">
+    <select id="locality-dropdown" name="locality"></select>
+</div>
 
 <div id="calendar"></div>
 
@@ -42,33 +45,35 @@
                     <input id="hdShiftID" type="hidden" value="0" />
                     <div class="form-group">
                         <label> Employee</label>
-                        <input id="txtEmployee" class="form-control" type="text" />
-                    </div>
-                    <div class="form-group">
-                        <label> Start </label>
-                        <div class="input-group date" id="datepickerStart">
-                            <input type="text" id="txtStart" class="form-control">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                            <div class="input-group date" id="datepickerStart">
+                                <select id="txtEmployee" name="locality" style="background-size:inherit"></select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label> End </label>
-                        <div class="input-group date" id="datepickerEnd">
-                            <input type="text" id="txtEnd" class="form-control">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <div class="form-group">
+                            <label> Start </label>
+                            <div class="input-group date" id="datepickerStart">
+                                <input type="text" id="txtStart" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label> Notes </label>
-                        <input id="txtNotes" rows="3" class="form-control" />
-                    </div>
+                        <div class="form-group">
+                            <label> End </label>
+                            <div class="input-group date" id="datepickerEnd">
+                                <input type="text" id="txtEnd" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label> Notes </label>
+                            <input id="txtNotes" rows="3" class="form-control" />
+                        </div>
 
-                    <button id="btnSave" class="btn btn-success btn-sm pull-left" style="margin: 2px;">Save</button>
-                </form>
+                        <button id="btnSave" class="btn btn-success btn-sm pull-left" style="margin: 2px;">Save</button>
+</form>
             </div>
             <div class="modal-footer">
             </div>
@@ -89,15 +94,27 @@
 
             FetchEventAndRenderCalendar();
 
-            let dropdown = $('#locality-dropdown');
-            dropdown.empty();
-            dropdown.append('<option selected="true" disabled>Choose Location</option>');
-            dropdown.prop('selectedIndex', 0);
+            let dropdownLocation = $('#locality-dropdown');
+            dropdownLocation.empty();
+            dropdownLocation.append('<option selected="true" disabled> Choose Location </option>');
+            dropdownLocation.prop('selectedIndex', 0);
             const url = '/Locations/GetLocationsDropdown';
 
             $.getJSON(url, function (data) {
                 $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LocationId).text(entry.LocationName));
+                    dropdownLocation.append($('<option></option>').attr('value', entry.LocationId).text(entry.LocationName));
+                })
+            });
+
+            let dropdownEmployee = $('#txtEmployee');
+            dropdownEmployee.empty();
+            dropdownEmployee.append('<option selected="true" disabled> Choose Employee </option>');
+            dropdownEmployee.prop('selectedIndex', 0);
+            const url2 = '/Employees/GetEmployees';
+
+            $.getJSON(url2, function (data) {
+                $.each(data, function (key, entry) {
+                    dropdownEmployee.append($('<option></option>').attr('value', entry.EmployeeId).text(entry.EmployeeName));
                 })
             });
 
@@ -153,6 +170,7 @@
                         $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
                         $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
                         $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                        $description.append($('<p/>').html('<b>Location:</b>'/* + calEvent.description*/));
                         $('#myModal #pDetails').empty().html($description);
 
                         $('#myModal').modal();
