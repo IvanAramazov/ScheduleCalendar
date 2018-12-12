@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ScheduleCalendar_V2.Models.Bonus>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BonusType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BonusPayment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BonusType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BonusPayment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BonusId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BonusId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BonusId })
+        </td>
+    </tr>
+}
+
+</table>

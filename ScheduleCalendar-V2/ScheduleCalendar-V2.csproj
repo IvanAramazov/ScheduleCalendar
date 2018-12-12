@@ -154,9 +154,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BonusesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\ShiftPaymentsController.cs" />
     <Compile Include="Controllers\ShiftsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,11 +171,17 @@
     <Compile Include="Migrations\201812111344083_revrtChanges.Designer.cs">
       <DependentUpon>201812111344083_revrtChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812121345314_BonusesAndShiftPayment.cs" />
+    <Compile Include="Migrations\201812121345314_BonusesAndShiftPayment.Designer.cs">
+      <DependentUpon>201812121345314_BonusesAndShiftPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Bonus.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ScheduleCalendarContext-V2.cs" />
     <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\ShiftPayment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test.cs" />
   </ItemGroup>
@@ -544,6 +552,16 @@
     <Content Include="Views\Locations\Details.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Bonuses\Create.cshtml" />
+    <Content Include="Views\Bonuses\Delete.cshtml" />
+    <Content Include="Views\Bonuses\Details.cshtml" />
+    <Content Include="Views\Bonuses\Edit.cshtml" />
+    <Content Include="Views\Bonuses\Index.cshtml" />
+    <Content Include="Views\ShiftPayments\Create.cshtml" />
+    <Content Include="Views\ShiftPayments\Delete.cshtml" />
+    <Content Include="Views\ShiftPayments\Details.cshtml" />
+    <Content Include="Views\ShiftPayments\Edit.cshtml" />
+    <Content Include="Views\ShiftPayments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -567,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812111344083_revrtChanges.resx">
       <DependentUpon>201812111344083_revrtChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121345314_BonusesAndShiftPayment.resx">
+      <DependentUpon>201812121345314_BonusesAndShiftPayment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

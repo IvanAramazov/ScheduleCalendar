@@ -5,10 +5,6 @@
 <h2>Calendar</h2>
 <br/>
 
-<div class="dropdown" style="margin-bottom:10px">
-    <select id="locality-dropdown" name="locality"></select>
-</div>
-
 <div id="calendar"></div>
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -45,10 +41,8 @@
                     <input id="hdShiftID" type="hidden" value="0" />
                     <div class="form-group">
                         <label> Employee</label>
-                            <div class="input-group date" id="datepickerStart">
-                                <select id="txtEmployee" name="locality" style="background-size:inherit"></select>
-                            </div>
-                        </div>
+                        <input id="txtEmployee" rows="3" class="form-control" />
+                    </div>
                         <div class="form-group">
                             <label> Start </label>
                             <div class="input-group date" id="datepickerStart">
@@ -91,33 +85,7 @@
         $(document).ready(function () {
             var events = [];
             var selectedEvent = null;
-
             FetchEventAndRenderCalendar();
-
-            let dropdownLocation = $('#locality-dropdown');
-            dropdownLocation.empty();
-            dropdownLocation.append('<option selected="true" disabled> Choose Location </option>');
-            dropdownLocation.prop('selectedIndex', 0);
-            const url = '/Locations/GetLocationsDropdown';
-
-            $.getJSON(url, function (data) {
-                $.each(data, function (key, entry) {
-                    dropdownLocation.append($('<option></option>').attr('value', entry.LocationId).text(entry.LocationName));
-                })
-            });
-
-            let dropdownEmployee = $('#txtEmployee');
-            dropdownEmployee.empty();
-            dropdownEmployee.append('<option selected="true" disabled> Choose Employee </option>');
-            dropdownEmployee.prop('selectedIndex', 0);
-            const url2 = '/Employees/GetEmployees';
-
-            $.getJSON(url2, function (data) {
-                $.each(data, function (key, entry) {
-                    dropdownEmployee.append($('<option></option>').attr('value', entry.EmployeeId).text(entry.EmployeeName));
-                })
-            });
-
             function FetchEventAndRenderCalendar() {
                 events = [];
                 $.ajax({
@@ -133,7 +101,6 @@
                                 end: moment(v.EndShift)
                             });
                         })
-
                         GenerateCalender(events);
                     },
                     error: function (error) {
@@ -141,7 +108,6 @@
                     }
                 })
             }
-
             function GenerateCalender(events) {
                 $('#calendar').fullCalendar('destroy');
                 $('#calendar').fullCalendar({
@@ -158,7 +124,7 @@
                     header: {
                         left: 'prev,next today',
                         center: 'title',
-                        right: 'month,basicWeek,basicDay,agenda'
+                        right: 'month,basicWeek'
                     },
                     eventLimit: false,
                     eventColor: '#378006',
@@ -170,9 +136,7 @@
                         $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
                         $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
                         $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
-                        $description.append($('<p/>').html('<b>Location:</b>'/* + calEvent.description*/));
                         $('#myModal #pDetails').empty().html($description);
-
                         $('#myModal').modal();
                     },
                     selectable: true,
@@ -189,12 +153,10 @@
                     }
                 })
             }
-
             $('#btnEdit').click(function () {
                 //Open modal dialog for edit event
                 openAddEditForm();
             })
-
             $('#btnDelete').click(function () {
                 if (selectedEvent != null && confirm('Are you sure?')) {
                     $.ajax({
@@ -214,7 +176,6 @@
                     })
                 }
             })
-
             $('#datepickerStart,#datepickerEnd').datetimepicker({
                 format: 'DD/MM/YYYY HH:mm A'
             });
@@ -230,7 +191,6 @@
                 $('#myModal').modal('hide');
                 $('#myModalSave').modal();
             }
-
             $('#btnSave').click(function () {
                 //Validation/
                 if ($('#txtEmployee').val().trim() == "") {
@@ -252,18 +212,16 @@
                         alert('Invalid end date');
                     }
                 }
-
                 var data = {
                     ShiftId: $('#hdShiftID').val(),
-                    Employee: $('#txtEmployee').val().trim(),
+                    EmployeeId: $('#txtEmployee').val().trim(),
                     StartShift: $('#txtStart').val().trim(),
                     EndShift: $('#txtEnd').val().trim(),
                     Notes: $('#txtNotes').val(),
                 }
                 SaveEvent(data);
-                // call function for submit data to the server
+                // call function for submit data to the server 
             })
-
             function SaveEvent(data) {
                 $.ajax({
                     type: "POST",

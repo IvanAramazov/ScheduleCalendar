@@ -17,6 +17,8 @@ namespace ScheduleCalendar_V2.Models
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<ShiftPayment> ShiftPayments { get; set; }
+        public DbSet<Bonus> Bonuses { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
