@@ -10,31 +10,57 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ShiftType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShiftPaymentRate)
-        </th>
-        <th></th>
-    </tr>
+<link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet" />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShiftType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShiftPaymentRate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShiftPaymentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShiftPaymentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ShiftPaymentId })
-        </td>
-    </tr>
+@(Html
+                    .Grid(Model)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.ShiftType).Titled("Shift Type");
+                        columns.Add(model => model.ShiftPaymentRate).Titled("Shift Payment");
+                        columns.Add(model => "<a data-id=\"" + model.ShiftPaymentId + "\">Edit</button>").Encoded(false);
+                    })
+                    .Empty("No data found")
+                    .Filterable()
+                    .Sortable()
+                    .Pageable()
+)
+
+
+@section Scripts{
+    <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+    <script>
+        [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+            new MvcGrid(element);
+        });
+    </script>
 }
 
-</table>
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShiftType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShiftPaymentRate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShiftType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShiftPaymentRate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ShiftPaymentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ShiftPaymentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ShiftPaymentId })
+                </td>
+            </tr>
+        }
+    </table>*@
