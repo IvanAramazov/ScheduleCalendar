@@ -178,6 +178,14 @@
     <Compile Include="Migrations\201812121345314_BonusesAndShiftPayment.Designer.cs">
       <DependentUpon>201812121345314_BonusesAndShiftPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812131318053_AddColumnsFK.cs" />
+    <Compile Include="Migrations\201812131318053_AddColumnsFK.Designer.cs">
+      <DependentUpon>201812131318053_AddColumnsFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812131325368_AddColumnsFK2.cs" />
+    <Compile Include="Migrations\201812131325368_AddColumnsFK2.Designer.cs">
+      <DependentUpon>201812131325368_AddColumnsFK2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bonus.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -596,6 +604,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812121345314_BonusesAndShiftPayment.resx">
       <DependentUpon>201812121345314_BonusesAndShiftPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812131318053_AddColumnsFK.resx">
+      <DependentUpon>201812131318053_AddColumnsFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812131325368_AddColumnsFK2.resx">
+      <DependentUpon>201812131325368_AddColumnsFK2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

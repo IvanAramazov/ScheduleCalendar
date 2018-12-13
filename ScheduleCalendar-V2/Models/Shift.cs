@@ -18,5 +18,10 @@ namespace ScheduleCalendar_V2.Models
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
+        public int ShiftPaymentId { get; set; }
+        public ShiftPayment ShiftPayment { get; set; }
+
+        public int BonusId { get; set; }
+        public Bonus Bonus { get; set; }
     }
 }
