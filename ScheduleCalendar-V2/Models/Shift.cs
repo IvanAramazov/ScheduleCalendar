@@ -21,7 +21,7 @@ namespace ScheduleCalendar_V2.Models
         public int ShiftPaymentId { get; set; }
         public ShiftPayment ShiftPayment { get; set; }
 
-        public int BonusId { get; set; }
-        public Bonus Bonus { get; set; }
+        public int LocationId { get; set; }
+        public Location Location { get; set; }
     }
 }
