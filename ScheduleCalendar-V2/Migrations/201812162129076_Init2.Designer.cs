@@ -7,13 +7,13 @@ namespace ScheduleCalendar_V2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class revrtChanges : IMigrationMetadata
+    public sealed partial class Init2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(revrtChanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812111344083_revrtChanges"; }
+            get { return "201812162129076_Init2"; }
         }
         
         string IMigrationMetadata.Source

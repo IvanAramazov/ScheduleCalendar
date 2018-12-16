@@ -34,28 +34,6 @@ namespace ScheduleCalendar_V2.Controllers
             }
         }
 
-        //public JsonResult GetEventsByLocationId(int? locationId)
-        //{
-        //    using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
-        //    {
-
-
-        //        var events = cntx.Shifts.Where(loc => loc.Location.LocationId == locationId).Select(x => new
-        //        {
-        //            id = x.ShiftId,
-        //            title = x.Employee.EmployeeName,
-        //            description = x.Notes,
-        //            start = x.StartShift,
-        //            end = x.EndShift,
-        //            shiftType = x.ShiftPayment.ShiftType,
-        //            location = x.Location.LocationName
-        //        }).ToList();
-
-        //        return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-
-        //    }
-        //}
-
         public JsonResult GetEventsByLocationId(int id)
         {
             using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
@@ -90,6 +68,8 @@ namespace ScheduleCalendar_V2.Controllers
                         v.Notes = s.Notes;
                         v.StartShift = s.StartShift;
                         v.EndShift = s.EndShift;
+                        v.ShiftPaymentId = s.ShiftPaymentId;
+                        v.LocationId = s.LocationId;
                     }
                 }
                 else

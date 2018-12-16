@@ -166,25 +166,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812111055057_DbUpadeFK.cs" />
-    <Compile Include="Migrations\201812111055057_DbUpadeFK.Designer.cs">
-      <DependentUpon>201812111055057_DbUpadeFK.cs</DependentUpon>
+    <Compile Include="Migrations\201812162110312_Initial.cs" />
+    <Compile Include="Migrations\201812162110312_Initial.Designer.cs">
+      <DependentUpon>201812162110312_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812111344083_revrtChanges.cs" />
-    <Compile Include="Migrations\201812111344083_revrtChanges.Designer.cs">
-      <DependentUpon>201812111344083_revrtChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812121345314_BonusesAndShiftPayment.cs" />
-    <Compile Include="Migrations\201812121345314_BonusesAndShiftPayment.Designer.cs">
-      <DependentUpon>201812121345314_BonusesAndShiftPayment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812131318053_AddColumnsFK.cs" />
-    <Compile Include="Migrations\201812131318053_AddColumnsFK.Designer.cs">
-      <DependentUpon>201812131318053_AddColumnsFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812131325368_AddColumnsFK2.cs" />
-    <Compile Include="Migrations\201812131325368_AddColumnsFK2.Designer.cs">
-      <DependentUpon>201812131325368_AddColumnsFK2.cs</DependentUpon>
+    <Compile Include="Migrations\201812162129076_Init2.cs" />
+    <Compile Include="Migrations\201812162129076_Init2.Designer.cs">
+      <DependentUpon>201812162129076_Init2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bonus.cs" />
@@ -428,6 +416,7 @@
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <Content Include="Content\MvcGrid\Fonts\GridGlyphs.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
@@ -596,20 +585,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812111055057_DbUpadeFK.resx">
-      <DependentUpon>201812111055057_DbUpadeFK.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812162110312_Initial.resx">
+      <DependentUpon>201812162110312_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812111344083_revrtChanges.resx">
-      <DependentUpon>201812111344083_revrtChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812121345314_BonusesAndShiftPayment.resx">
-      <DependentUpon>201812121345314_BonusesAndShiftPayment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812131318053_AddColumnsFK.resx">
-      <DependentUpon>201812131318053_AddColumnsFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812131325368_AddColumnsFK2.resx">
-      <DependentUpon>201812131325368_AddColumnsFK2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812162129076_Init2.resx">
+      <DependentUpon>201812162129076_Init2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

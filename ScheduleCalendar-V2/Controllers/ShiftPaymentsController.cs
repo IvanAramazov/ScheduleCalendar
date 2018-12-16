@@ -20,6 +20,20 @@ namespace ScheduleCalendar_V2.Controllers
             return View(db.ShiftPayments.ToList());
         }
 
+        public JsonResult GetShiftPayment()
+        {
+            using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
+            {
+                //var events = cntx.Shifts.ToList();
+
+                var events = cntx.ShiftPayments.Select(x => new {
+                    paymentId = x.ShiftPaymentId,
+                    payment = x.ShiftType
+                }).ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
         // GET: ShiftPayments/Details/5
         public ActionResult Details(int? id)
         {

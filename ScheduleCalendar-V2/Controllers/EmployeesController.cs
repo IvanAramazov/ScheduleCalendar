@@ -24,7 +24,11 @@ namespace ScheduleCalendar_V2.Controllers
         {
             using (ScheduleCalendarContext_V2 cntx = new ScheduleCalendarContext_V2())
             {
-                var events = cntx.Employees.ToList();
+                var events = cntx.Employees.Select(x=>new
+                {
+                    empId = x.EmployeeId,
+                    empName =x.EmployeeName
+                });
                 return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }

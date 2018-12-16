@@ -10,6 +10,7 @@ namespace ScheduleCalendar_V2.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ScheduleCalendar_V2.Models.ScheduleCalendarContext_V2 context)

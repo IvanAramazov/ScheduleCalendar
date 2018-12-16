@@ -9,5 +9,6 @@ namespace ScheduleCalendar_V2.Models
     {
         public int LocationId { get; set; }
         public string LocationName { get; set; }
+        public List<Shift> Shifts { get; set; }
     }
 }
